@@ -13,7 +13,7 @@ const MostAnswers = () => {
     }, [])
     return (
         <Container fluid="sm" className="py-4">
-            <h3>Users with most answers</h3>
+            <h3 className="pb-3">Users with most answers</h3>
             { users && (
                 <Table striped bordered hover>
                     <thead>

@@ -13,7 +13,7 @@ const HotQuestions = () => {
 
     return (
         <Container fluid="sm" className="py-4">
-            <h3>Hot Questions</h3>
+            <h3 className="pb-3">Hot Questions</h3>
             { questions && (
                 <Table striped bordered hover>
                     <thead>
