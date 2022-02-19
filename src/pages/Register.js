@@ -6,7 +6,6 @@ import Input from "../components/Input/Input";
 import {useMutation} from "react-query";
 import authentication from "../services/authentication";
 
-
 const Register = () => {
 
     const handleRegistration = useMutation(async (value) => {
@@ -73,7 +72,7 @@ const Register = () => {
                         </Col>
                     </Row>
                     {  handleRegistration.isError && (
-                        <p className="text-danger">You either entered used mail or didn't fill all input fields</p>
+                        <p className="text-danger">You either entered used mail or didn't fill all input fields.</p>
                     ) }
                     <Button type="submit">
                         Sign up
