@@ -1,33 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import question from "../../services/question";
 import {Button, Card, Col, Container, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import moment from "moment";
+import { useQuery } from 'react-query'
 
 const LatestQuestions = () => {
     const size = 3;
     const [page, setPage] = useState(1);
-    const [questions, setQuestions] = useState([])
 
-    useEffect(() => {
+    const { isLoading, data } = useQuery('latestQuestions', () =>
         question.getLatestQuestions(`page/${page}/size/${size}`)
-            .then(response => {
-                setQuestions(response.data);
-            })
-    }, [page])
-
-    if (!questions) {
-        return (
-            <div>Loading..</div>
-        )
-    }
+    );
 
     return (
         <Container fluid="sm" className="py-4">
             <h3 className="pb-3">Latest Questions</h3>
             <Row xs={1} md={2} className="g-4">
-                { questions && (
-                    questions.map((question, index) => (
+                { !isLoading && (
+                    data.data.map((question, index) => (
                         <Col key={index} className="my-3">
                             <Card>
                                 <Card.Body>

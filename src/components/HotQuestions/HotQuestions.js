@@ -1,20 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import question from "../../services/question";
 import {Container, Table} from "react-bootstrap";
+import {useQuery} from "react-query";
 
 const HotQuestions = () => {
-    const [questions, setQuestions] = useState([])
-    useEffect(() => {
+
+    const { isLoading, data } = useQuery("hotQuestions", () =>
         question.getHotQuestions()
-            .then(response => {
-                setQuestions(response.data)
-            })
-    }, [])
+    );
 
     return (
         <Container fluid="sm" className="py-4">
             <h3 className="pb-3">Hot Questions</h3>
-            { questions && (
+            { !isLoading && (
                 <Table striped bordered hover>
                     <thead>
                     <tr>
@@ -23,7 +21,7 @@ const HotQuestions = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    { questions.map(question => (
+                    { data.data.map(question => (
                         question.count > 0 && (
                             <tr key={question.id}>
                                 <td>{question.description}</td>

@@ -1,20 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import user from "../../services/user";
 import {Container, Table} from "react-bootstrap";
+import {useQuery} from "react-query";
 
 const MostAnswers = () => {
-    const [users, setUsers] = useState([]);
 
-    useEffect(() => {
+    const { isLoading, data } = useQuery("mostAnswers", () =>
         user.getMostAnswers()
-            .then(response => {
-                setUsers(response.data)
-            })
-    }, [])
+    );
+
     return (
         <Container fluid="sm" className="py-4">
             <h3 className="pb-3">Users with most answers</h3>
-            { users && (
+            { !isLoading && (
                 <Table striped bordered hover>
                     <thead>
                     <tr>
@@ -23,7 +21,7 @@ const MostAnswers = () => {
                     </tr>
                     </thead>
                     <tbody>
-                    { users.map(user => (
+                    { data.data.map(user => (
                         user.count > 0 && (
                             <tr key={user.id}>
                                 <td>{user.firstName + " " + user.lastName}</td>

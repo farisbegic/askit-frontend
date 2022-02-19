@@ -14,7 +14,8 @@ const Header = () => {
                         style={{ maxHeight: '100px' }}
                         navbarScroll
                     >
-                        <Link className="text-secondary text-decoration-none" to="/">Home</Link>
+                        <Link className="text-secondary text-decoration-none px-2" to="/">Home</Link>
+                        <Link className="text-secondary text-decoration-none px-2" to="/register">Register</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
