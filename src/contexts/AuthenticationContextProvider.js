@@ -5,13 +5,18 @@ export const AuthenticationContext = createContext("");
 
 const AuthenticationContextProvider = (props) => {
     const [accessToken, setAccessToken] = useState("");
+    const [rejected, setRejected] = useState(false);
     const [name, setName] = useState("");
 
     const fetchAccessToken = async () => {
-        const response = await authentication.getAccessToken()
-        if (response.status === 200) {
-            setAccessToken(response.data.accessToken)
-            setName(response.data.name)
+        try {
+            const response = await authentication.getAccessToken()
+            if (response.status === 200) {
+                setAccessToken(response.data.accessToken)
+                setName(response.data.name)
+            }
+        } catch (err) {
+            setRejected(true)
         }
     }
 
@@ -20,6 +25,7 @@ const AuthenticationContextProvider = (props) => {
         if (response.status === 200) {
             setAccessToken("")
             setName("")
+            setRejected(true)
         }
     }
 
@@ -30,7 +36,7 @@ const AuthenticationContextProvider = (props) => {
     }, [accessToken])
 
     return (
-        <AuthenticationContext.Provider value={{accessToken, setAccessToken, name, setName, logout}}>
+        <AuthenticationContext.Provider value={{accessToken, setAccessToken, name, setName, rejected, setRejected, logout}}>
             {props.children}
         </AuthenticationContext.Provider>
     );

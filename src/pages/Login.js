@@ -9,7 +9,7 @@ import authentication from "../services/authentication";
 import {AuthenticationContext} from "../contexts/AuthenticationContextProvider";
 
 const Login = () => {
-    const { setAccessToken, setName } = useContext(AuthenticationContext);
+    const { setAccessToken, setName, setRejected } = useContext(AuthenticationContext);
 
     const handleLogin = useMutation(async (value) => {
         const response = await authentication.login(value)
@@ -17,6 +17,7 @@ const Login = () => {
         if (response.status === 200) {
             setAccessToken(response.data.accessToken);
             setName(response.data.name)
+            setRejected(false);
         }
     })
 

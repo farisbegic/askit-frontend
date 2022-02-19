@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {AuthenticationContext} from "../../contexts/AuthenticationContextProvider";
 
 const Header = () => {
-    const { name, logout } = useContext(AuthenticationContext)
+    const { name, logout, accessToken } = useContext(AuthenticationContext)
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid="sm">
@@ -17,14 +17,18 @@ const Header = () => {
                         navbarScroll
                     >
                         <Link className="text-secondary text-decoration-none px-2" to="/">Home</Link>
-                        <Link className="text-secondary text-decoration-none px-2" to="/register">Register</Link>
-                        <Link className="text-secondary text-decoration-none px-2" to="/login">Login</Link>
-                        <Link className="text-secondary text-decoration-none px-2" to="/" onClick={() => logout()}>Logout</Link>
+                        { !accessToken ? (
+                            <>
+                                <Link className="text-secondary text-decoration-none px-2" to="/register">Register</Link>
+                                <Link className="text-secondary text-decoration-none px-2" to="/login">Login</Link>
+                            </>
+                        ) : (
+                            <>
+                                <Link className="text-secondary text-decoration-none px-2" to="/profile">{name}</Link>
+                                <Link className="text-secondary text-decoration-none px-2" to="/" onClick={() => logout()}>Logout</Link>
+                            </>
+                            )}
                     </Nav>
-
-                    <Navbar.Text className="justify-content-end">
-                        Signed in as: <Link to="/profile">{name}</Link>
-                    </Navbar.Text>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

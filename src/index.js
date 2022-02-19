@@ -10,6 +10,8 @@ import Login from "./pages/Login";
 
 import AuthenticationContextProvider from "./contexts/AuthenticationContextProvider";
 import Profile from "./pages/Profile";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import LimitedRoute from "./components/LimitedRoute/LimitedRoute";
 
 const rootElement = document.getElementById("root");
 const queryClient = new QueryClient()
@@ -21,9 +23,13 @@ render(
                 <Header />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/register" element={<Register />}/>
-                    <Route path="/login" element={<Login />}/>
-                    <Route path="/profile" element={<Profile />}/>
+                    <Route element={<LimitedRoute />}>
+                        <Route path="/register" element={<Register />}/>
+                        <Route path="/login" element={<Login />}/>
+                    </Route>
+                    <Route element={<ProtectedRoute />}>
+                        <Route path="/profile" element={<Profile />}/>
+                    </Route>
                 </Routes>
             </AuthenticationContextProvider>
         </BrowserRouter>
