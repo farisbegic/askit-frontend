@@ -16,8 +16,14 @@ const LatestQuestions = () => {
             })
     }, [page])
 
+    if (!questions) {
+        return (
+            <div>Loading..</div>
+        )
+    }
+
     return (
-        <Container fluid="sm">
+        <Container fluid="sm" className="py-4">
             <h3>Latest Questions</h3>
             { questions && (
                 questions.map((question, index) => (
@@ -31,7 +37,7 @@ const LatestQuestions = () => {
                     </Card>
                 ))
             )}
-            <Button primary onClick={() => setPage(page+1)}>Load More</Button>
+            <Button onClick={() => setPage(page+1)}>Load More</Button>
         </Container>
     );
 };

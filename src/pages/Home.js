@@ -1,12 +1,15 @@
 import React from 'react';
-import {Container} from "react-bootstrap";
 import LatestQuestions from "../components/LatestQuestions/LatestQuestions";
+import MostAnswers from "../components/MostAnswers/MostAnswers";
+import HotQuestions from "../components/HotQuestions/HotQuestions";
 
 const Home = () => {
     return (
-        <Container fluid="sm" className="mt-4">
+        <div className="my-4">
             <LatestQuestions />
-        </Container>
+            <MostAnswers />
+            <HotQuestions />
+        </div>
     );
 };
 
