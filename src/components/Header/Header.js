@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Container, Nav, Navbar} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {AuthenticationContext} from "../../contexts/AuthenticationContextProvider";
 
 const Header = () => {
+    const { name } = useContext(AuthenticationContext)
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid="sm">
@@ -18,6 +20,10 @@ const Header = () => {
                         <Link className="text-secondary text-decoration-none px-2" to="/register">Register</Link>
                         <Link className="text-secondary text-decoration-none px-2" to="/login">Login</Link>
                     </Nav>
+
+                    <Navbar.Text className="justify-content-end">
+                        Signed in as: <Link to="/profile">{name}</Link>
+                    </Navbar.Text>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

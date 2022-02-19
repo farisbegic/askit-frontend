@@ -5,10 +5,14 @@ export const AuthenticationContext = createContext("");
 
 const AuthenticationContextProvider = (props) => {
     const [accessToken, setAccessToken] = useState("");
+    const [name, setName] = useState("");
 
     const fetchAccessToken = async () => {
         const response = await authentication.getAccessToken()
-        setAccessToken(response.data.accessToken)
+        if (response.status === 200) {
+            setAccessToken(response.data.accessToken)
+            setName(response.data.name)
+        }
     }
 
     useEffect(() => {
@@ -18,7 +22,7 @@ const AuthenticationContextProvider = (props) => {
     }, [accessToken])
 
     return (
-        <AuthenticationContext.Provider value={{accessToken}}>
+        <AuthenticationContext.Provider value={{accessToken, setAccessToken, name, setName}}>
             {props.children}
         </AuthenticationContext.Provider>
     );

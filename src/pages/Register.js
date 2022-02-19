@@ -1,15 +1,22 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Button, Col, Container, Row} from "react-bootstrap";
 import {registerValidation} from "../utils/validations/register";
 import { Formik, Form } from "formik";
 import Input from "../components/Input/Input";
 import {useMutation} from "react-query";
 import authentication from "../services/authentication";
+import {AuthenticationContext} from "../contexts/AuthenticationContextProvider";
 
 const Register = () => {
+    const { setAccessToken, setName } = useContext(AuthenticationContext);
 
     const handleRegistration = useMutation(async (value) => {
-        await authentication.register(value)
+        const response = await authentication.register(value)
+
+        if (response.status === 200) {
+            setAccessToken(response.data.accessToken);
+            setName(response.data.name)
+        }
     })
 
     return (

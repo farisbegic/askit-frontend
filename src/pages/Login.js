@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Form, Formik} from "formik";
 import {registerValidation} from "../utils/validations/register";
 import {Button, Col, Container, Row} from "react-bootstrap";
@@ -6,11 +6,18 @@ import Input from "../components/Input/Input";
 import {loginValidation} from "../utils/validations/login";
 import {useMutation} from "react-query";
 import authentication from "../services/authentication";
+import {AuthenticationContext} from "../contexts/AuthenticationContextProvider";
 
 const Login = () => {
+    const { setAccessToken, setName } = useContext(AuthenticationContext);
 
     const handleLogin = useMutation(async (value) => {
-        await authentication.login(value)
+        const response = await authentication.login(value)
+
+        if (response.status === 200) {
+            setAccessToken(response.data.accessToken);
+            setName(response.data.name)
+        }
     })
 
     return (
