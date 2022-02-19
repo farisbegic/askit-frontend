@@ -5,8 +5,8 @@ import {useQuery} from "react-query";
 
 const HotQuestions = () => {
 
-    const { isLoading, data } = useQuery("hotQuestions", () =>
-        question.getHotQuestions()
+    const { isLoading, data } = useQuery("hotQuestions", async () =>
+        await question.getHotQuestions()
     );
 
     return (

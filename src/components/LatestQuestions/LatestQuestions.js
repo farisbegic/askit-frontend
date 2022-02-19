@@ -9,8 +9,8 @@ const LatestQuestions = () => {
     const size = 3;
     const [page, setPage] = useState(1);
 
-    const { isLoading, data } = useQuery('latestQuestions', () =>
-        question.getLatestQuestions(`page/${page}/size/${size}`)
+    const { isLoading, data } = useQuery(['latestQuestions', page], async () =>
+        await question.getLatestQuestions(`page/${page}/size/${size}`)
     );
 
     return (

@@ -5,8 +5,8 @@ import {useQuery} from "react-query";
 
 const MostAnswers = () => {
 
-    const { isLoading, data } = useQuery("mostAnswers", () =>
-        user.getMostAnswers()
+    const { isLoading, data } = useQuery("mostAnswers", async () =>
+        await user.getMostAnswers()
     );
 
     return (
