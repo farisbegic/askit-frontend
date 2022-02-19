@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 
 import AuthenticationContextProvider from "./contexts/AuthenticationContextProvider";
+import Profile from "./pages/Profile";
 
 const rootElement = document.getElementById("root");
 const queryClient = new QueryClient()
@@ -22,6 +23,7 @@ render(
                     <Route path="/" element={<Home />} />
                     <Route path="/register" element={<Register />}/>
                     <Route path="/login" element={<Login />}/>
+                    <Route path="/profile" element={<Profile />}/>
                 </Routes>
             </AuthenticationContextProvider>
         </BrowserRouter>

@@ -15,6 +15,14 @@ const AuthenticationContextProvider = (props) => {
         }
     }
 
+    const logout = async () => {
+        const response = await authentication.logout();
+        if (response.status === 200) {
+            setAccessToken("")
+            setName("")
+        }
+    }
+
     useEffect(() => {
         if (!accessToken) {
             fetchAccessToken()
@@ -22,7 +30,7 @@ const AuthenticationContextProvider = (props) => {
     }, [accessToken])
 
     return (
-        <AuthenticationContext.Provider value={{accessToken, setAccessToken, name, setName}}>
+        <AuthenticationContext.Provider value={{accessToken, setAccessToken, name, setName, logout}}>
             {props.children}
         </AuthenticationContext.Provider>
     );
