@@ -24,6 +24,7 @@ const Header = () => {
                             </>
                         ) : (
                             <>
+                                <Link className="text-secondary text-decoration-none px-2" to="/my-questions">My Questions</Link>
                                 <Link className="text-secondary text-decoration-none px-2" to="/profile">{name}</Link>
                                 <Link className="text-secondary text-decoration-none px-2" to="/" onClick={() => logout()}>Logout</Link>
                             </>

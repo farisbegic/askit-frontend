@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import question from "../../services/question";
-import {Button, Card, Col, Container, Row} from "react-bootstrap";
-import {Link} from "react-router-dom";
-import moment from "moment";
+import { Container } from "react-bootstrap";
 import { useQuery } from 'react-query'
+import QuestionList from "../QuestionList/QuestionList";
 
 const LatestQuestions = () => {
     const size = 3;
@@ -16,23 +15,9 @@ const LatestQuestions = () => {
     return (
         <Container fluid="sm" className="py-4">
             <h3 className="pb-3">Latest Questions</h3>
-            <Row xs={1} md={2} className="g-4">
-                { !isLoading && (
-                    data.data.map((question, index) => (
-                        <Col key={index} className="my-3">
-                            <Card>
-                                <Card.Body>
-                                    <Card.Title>{question.User.firstName + " " + question.User.lastName}</Card.Title>
-                                    <Card.Subtitle className="mb-2 text-muted">{moment(question.createdAt).fromNow()}</Card.Subtitle>
-                                    <Card.Text>{question.description}</Card.Text>
-                                    <Link to="/">View More</Link>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    ))
-                )}
-            </Row>
-            <Button onClick={() => setPage(page+1)}>Load More</Button>
+            { !isLoading && (
+                <QuestionList questions={data.data} page={page} setPage={setPage} />
+            )}
         </Container>
     );
 };
