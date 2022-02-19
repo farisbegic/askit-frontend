@@ -1,5 +1,5 @@
 import API from "../axios";
-import {EDIT_INFORMATION, GET_USER, MOST_ANSWERS} from "../utils/constants/user";
+import {EDIT_INFORMATION, EDIT_PASSWORD, GET_USER, MOST_ANSWERS} from "../utils/constants/user";
 
 const user = {
     async getMostAnswers() {
@@ -10,6 +10,9 @@ const user = {
     },
     async editProfile(payload) {
         return await API.put(EDIT_INFORMATION, payload)
+    },
+    async editPassword(payload) {
+        return await API.post(EDIT_PASSWORD, payload)
     }
 }
 
