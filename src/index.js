@@ -7,7 +7,6 @@ import Home from './pages/Home'
 import Header from "./components/Header/Header";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-
 import AuthenticationContextProvider from "./contexts/AuthenticationContextProvider";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";

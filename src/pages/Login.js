@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import {Form, Formik} from "formik";
-import {registerValidation} from "../utils/validations/register";
-import {Button, Col, Container, Row} from "react-bootstrap";
+import {Button, Container} from "react-bootstrap";
 import Input from "../components/Input/Input";
 import {loginValidation} from "../utils/validations/login";
 import {useMutation} from "react-query";
