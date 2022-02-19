@@ -2,9 +2,10 @@ import React from 'react';
 import {useQuery} from "react-query";
 import user from "../services/user";
 import {Button, Container, ListGroup, ListGroupItem} from "react-bootstrap";
+import {useNavigate} from "react-router-dom";
 
 const Profile = () => {
-
+    const navigate = useNavigate()
     const { isLoading, data } = useQuery("profileInformaton", async () =>
         await user.getUser()
     );
@@ -19,8 +20,8 @@ const Profile = () => {
                     <ListGroupItem>Email: {data.data.email}</ListGroupItem>
                 </ListGroup>
             )}
-            <Button className="mt-4 mx-1">Update profile</Button>
-            <Button className="mt-4 mx-1">Update password</Button>
+            <Button className="mt-4 mx-1" onClick={() => {navigate("/edit-profile")}}>Edit profile</Button>
+            <Button className="mt-4 mx-1" onClick={() => {navigate("/edit-password")}}>Edit password</Button>
         </Container>
     );
 };

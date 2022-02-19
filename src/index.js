@@ -12,6 +12,8 @@ import AuthenticationContextProvider from "./contexts/AuthenticationContextProvi
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import LimitedRoute from "./components/LimitedRoute/LimitedRoute";
+import EditProfile from "./pages/EditProfile";
+import EditPassword from "./pages/EditPassword";
 
 const rootElement = document.getElementById("root");
 const queryClient = new QueryClient()
@@ -29,6 +31,8 @@ render(
                     </Route>
                     <Route element={<ProtectedRoute />}>
                         <Route path="/profile" element={<Profile />}/>
+                        <Route path="/edit-profile" element={<EditProfile />}/>
+                        <Route path="/edit-password" element={<EditPassword />}/>
                     </Route>
                 </Routes>
             </AuthenticationContextProvider>

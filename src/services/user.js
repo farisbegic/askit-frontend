@@ -1,5 +1,5 @@
 import API from "../axios";
-import {GET_USER, MOST_ANSWERS} from "../utils/constants/user";
+import {EDIT_INFORMATION, GET_USER, MOST_ANSWERS} from "../utils/constants/user";
 
 const user = {
     async getMostAnswers() {
@@ -7,6 +7,9 @@ const user = {
     },
     async getUser() {
         return await API.get(GET_USER)
+    },
+    async editProfile(payload) {
+        return await API.put(EDIT_INFORMATION, payload)
     }
 }
 
