@@ -6,6 +6,7 @@ import {AiOutlineEdit, AiOutlineDelete} from 'react-icons/ai';
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import answer from "../../services/answer";
 import {useNavigate} from "react-router-dom";
+import Reactions from "../Reactions/Reactions";
 
 const AnswerDetail = ({ questionId }) => {
 
@@ -28,7 +29,7 @@ const AnswerDetail = ({ questionId }) => {
     return (
         <>
             { !isLoading && data.data.map(answer => (
-                <Card className="my-3">
+                <Card className="my-3" key={answer.id}>
                     <Card.Body>
                         <Row>
                             <Col>
@@ -53,6 +54,7 @@ const AnswerDetail = ({ questionId }) => {
                                 )}
                             </Col>
                         </Row>
+                        <Reactions id={answer.id} likes={answer.likes} dislikes={answer.dislikes} hasLiked={answer.hasLiked} hasDisliked={answer.hasDisliked}/>
                     </Card.Body>
                 </Card>
             ))}
