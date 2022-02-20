@@ -8,13 +8,14 @@ import authentication from "../services/authentication";
 import {AuthenticationContext} from "../contexts/AuthenticationContextProvider";
 
 const Register = () => {
-    const { setAccessToken, setName, setRejected } = useContext(AuthenticationContext);
+    const { setId, setAccessToken, setName, setRejected } = useContext(AuthenticationContext);
 
     const handleRegistration = useMutation(async (value) => {
         const response = await authentication.register(value)
 
         if (response.status === 200) {
             setAccessToken(response.data.accessToken);
+            setId(response.data.id)
             setName(response.data.name)
             setRejected(false)
         }
