@@ -5,6 +5,7 @@ import question from "../services/question";
 import {Container} from "react-bootstrap";
 import QuestionDetail from "../components/QuestionDetail/QuestionDetail";
 import AnswerDetail from "../components/AnswerDetail/AnswerDetail";
+import SaveAnswer from "../components/SaveAnswer/SaveAnswer";
 
 const Question = () => {
     const { id: questionId } = useParams();
@@ -40,6 +41,8 @@ const Question = () => {
                             creator: answer.User
                         }}/>
                     ))}
+
+                    <SaveAnswer questionId={questionId}/>
                 </>
             )}
         </Container>

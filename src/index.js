@@ -27,7 +27,6 @@ render(
                 <Header />
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/question/:id" element={<Question />}/>
                     <Route element={<LimitedRoute />}>
                         <Route path="/register" element={<Register />}/>
                         <Route path="/login" element={<Login />}/>
@@ -37,6 +36,7 @@ render(
                         <Route path="/edit-profile" element={<EditProfile />}/>
                         <Route path="/edit-password" element={<EditPassword />}/>
                         <Route path="/my-questions" element={<MyQuestions />}/>
+                        <Route path="/question/:id" element={<Question />}/>
                         <Route path="/edit-answer" element={<EditAnswer />}/>
                     </Route>
                 </Routes>

@@ -4,7 +4,7 @@ import Input from "../components/Input/Input";
 import {Button, Container} from "react-bootstrap";
 import {useMutation} from "react-query";
 import answer from "../services/answer";
-import {useLocation, useNavigate, useParams} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const EditAnswer = () => {
     const { state } = useLocation();

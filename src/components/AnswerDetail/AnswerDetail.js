@@ -30,12 +30,12 @@ const AnswerDetail = ({answer:answerData}) => {
                     </Col>
                     <Col>
                         <Card.Text>{moment(answerData?.createdAt).fromNow()}</Card.Text>
-                        { answerData.creator.id === id && (
+                        { answerData.creator?.id === id && (
                             <Card.Subtitle>
                                 <AiOutlineEdit
                                     size={22}
                                     style={{cursor: "pointer"}}
-                                    onClick={() => navigate(`/edit-answer/`, { state: answerData})}
+                                    onClick={() => navigate(`/edit-answer`, { state: answerData})}
                                 />{' '}
                                 <AiOutlineDelete
                                     size={20}
