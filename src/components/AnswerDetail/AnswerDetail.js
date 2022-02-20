@@ -5,10 +5,12 @@ import {AuthenticationContext} from "../../contexts/AuthenticationContextProvide
 import {AiOutlineEdit, AiOutlineDelete} from 'react-icons/ai';
 import {useMutation, useQueryClient} from "react-query";
 import answer from "../../services/answer";
+import {useNavigate} from "react-router-dom";
 
 const AnswerDetail = ({answer:answerData}) => {
     const { id } = useContext(AuthenticationContext);
     const queryClient = useQueryClient();
+    const navigate = useNavigate();
 
     const deleteAnswer = useMutation(async (value) => {
         await answer.deleteAnswer(value)
@@ -33,6 +35,7 @@ const AnswerDetail = ({answer:answerData}) => {
                                 <AiOutlineEdit
                                     size={22}
                                     style={{cursor: "pointer"}}
+                                    onClick={() => navigate(`/edit-answer/`, { state: answerData})}
                                 />{' '}
                                 <AiOutlineDelete
                                     size={20}

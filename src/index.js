@@ -15,6 +15,7 @@ import EditProfile from "./pages/EditProfile";
 import EditPassword from "./pages/EditPassword";
 import MyQuestions from "./pages/MyQuestions";
 import Question from "./pages/Question";
+import EditAnswer from "./pages/EditAnswer";
 
 const rootElement = document.getElementById("root");
 const queryClient = new QueryClient()
@@ -36,6 +37,7 @@ render(
                         <Route path="/edit-profile" element={<EditProfile />}/>
                         <Route path="/edit-password" element={<EditPassword />}/>
                         <Route path="/my-questions" element={<MyQuestions />}/>
+                        <Route path="/edit-answer" element={<EditAnswer />}/>
                     </Route>
                 </Routes>
             </AuthenticationContextProvider>
