@@ -26,7 +26,7 @@ const AnswerDetail = ({answer:answerData}) => {
                 <Row>
                     <Col>
                         <Card.Title>{`${answerData.creator?.firstName} ${answerData.creator?.lastName}`}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">{answerData?.description}</Card.Subtitle>
+                        <Card.Text className="mb-2">Answer: {answerData?.description}</Card.Text>
                     </Col>
                     <Col>
                         <Card.Text>{moment(answerData?.createdAt).fromNow()}</Card.Text>
@@ -38,7 +38,7 @@ const AnswerDetail = ({answer:answerData}) => {
                                     onClick={() => navigate(`/edit-answer`, { state: answerData})}
                                 />{' '}
                                 <AiOutlineDelete
-                                    size={20}
+                                    size={22}
                                     style={{cursor: "pointer"}}
                                     onClick={() => deleteAnswer.mutate(answerData.id)}
                                 />
