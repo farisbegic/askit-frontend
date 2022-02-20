@@ -1,33 +1,32 @@
 import React from 'react';
 import { AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike} from 'react-icons/ai';
 import {Col, Row} from "react-bootstrap";
-import questionRating from "../../services/questionRating";
 import {useMutation, useQueryClient} from "react-query";
 
 const Reactions = (props) => {
     const queryClient = useQueryClient();
 
     const handleInsert = useMutation(async (value) => {
-        await questionRating.saveRating(value)
+        await props.service.saveRating(value)
     }, {
         onSuccess: async () => {
-            await queryClient.refetchQueries("question")
+            await queryClient.refetchQueries(props.refetch)
         }
     })
 
     const handleDelete = useMutation(async (value) => {
-        await questionRating.deleteRating(value)
+        await props.service.deleteRating(value)
     }, {
         onSuccess: async () => {
-            await queryClient.refetchQueries("question")
+            await queryClient.refetchQueries(props.refetch)
         }
     })
 
     const handleEdit = useMutation( async (value) => {
-        await questionRating.editRating(value)
+        await props.service.editRating(value)
     }, {
         onSuccess: async () => {
-            await queryClient.refetchQueries("question")
+            await queryClient.refetchQueries(props.refetch)
         }
     })
 
@@ -36,12 +35,12 @@ const Reactions = (props) => {
             handleDelete.mutate(props.id)
         } else if (props.hasDisliked === "1") {
             handleEdit.mutate({
-                questionId: props.id,
+                id: props.id,
                 isLike: true
             })
         } else {
             handleInsert.mutate({
-                questionId: props.id,
+                id: props.id,
                 isLike: true
             })
         }
@@ -52,12 +51,12 @@ const Reactions = (props) => {
             handleDelete.mutate(props.id)
         } else if (props.hasLiked === "1") {
             handleEdit.mutate({
-                questionId: props.id,
+                id: props.id,
                 isLike: false
             })
         } else {
             handleInsert.mutate({
-                questionId: props.id,
+                id: props.id,
                 isLike: false
             })
         }

@@ -7,6 +7,7 @@ import {useMutation, useQuery, useQueryClient} from "react-query";
 import answer from "../../services/answer";
 import {useNavigate} from "react-router-dom";
 import Reactions from "../Reactions/Reactions";
+import answerRating from "../../services/answerRating";
 
 const AnswerDetail = ({ questionId }) => {
 
@@ -54,7 +55,7 @@ const AnswerDetail = ({ questionId }) => {
                                 )}
                             </Col>
                         </Row>
-                        <Reactions id={answer.id} likes={answer.likes} dislikes={answer.dislikes} hasLiked={answer.hasLiked} hasDisliked={answer.hasDisliked}/>
+                        <Reactions id={answer.id} likes={answer.likes} dislikes={answer.dislikes} hasLiked={answer.hasLiked} hasDisliked={answer.hasDisliked} service={answerRating} refetch="questionAnswers"/>
                     </Card.Body>
                 </Card>
             ))}
