@@ -4,14 +4,14 @@ import Input from "../Input/Input";
 import {useMutation, useQueryClient} from "react-query";
 import answer from "../../services/answer";
 
-const SaveAnswer = ({questionId}) => {
+const SaveAnswer = ({ questionId }) => {
     const queryClient = useQueryClient();
 
     const handleSave = useMutation(async (value) => {
         await answer.saveAnswer(value)
     }, {
         onSuccess: async () => {
-            await queryClient.refetchQueries("question")
+            await queryClient.refetchQueries("questionAnswers")
         }
     })
 

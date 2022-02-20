@@ -2,16 +2,25 @@ import React from 'react';
 import {Card} from "react-bootstrap";
 import moment from "moment";
 import Reactions from "../Reactions/Reactions";
+import {useQuery} from "react-query";
+import question from "../../services/question";
 
-const QuestionDetail = ({question}) => {
+const QuestionDetail = ({ questionId }) => {
+
+    const { isLoading, data } = useQuery(["question", questionId], async () =>
+        await question.getQuestion(questionId)
+    )
+
     return (
         <Card>
-            <Card.Body>
-                <Card.Title>{question.creator.firstName + " " + question.creator.lastName}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{moment(question.createdAt).fromNow()}</Card.Subtitle>
-                <Card.Text>Question: {question.description}</Card.Text>
-                <Reactions id={question.id} likes={question.likes} dislikes={question.dislikes} hasLiked={question.hasLiked} hasDisliked={question.hasDisliked}/>
-            </Card.Body>
+            { !isLoading && (
+                <Card.Body>
+                    <Card.Title>{data.data.User.firstName + " " + data.data.User.lastName}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">{moment(data.data.createdAt).fromNow()}</Card.Subtitle>
+                    <Card.Text>Question: {data.data.description}</Card.Text>
+                    <Reactions id={data.data.id} likes={data.data.likes} dislikes={data.data.dislikes} hasLiked={data.data.hasLiked} hasDisliked={data.data.hasDisliked}/>
+                </Card.Body>
+            )}
         </Card>
     );
 };
