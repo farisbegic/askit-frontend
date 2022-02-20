@@ -14,6 +14,7 @@ import LimitedRoute from "./components/LimitedRoute/LimitedRoute";
 import EditProfile from "./pages/EditProfile";
 import EditPassword from "./pages/EditPassword";
 import MyQuestions from "./pages/MyQuestions";
+import Question from "./pages/Question";
 
 const rootElement = document.getElementById("root");
 const queryClient = new QueryClient()
@@ -25,6 +26,7 @@ render(
                 <Header />
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/question/:id" element={<Question />}/>
                     <Route element={<LimitedRoute />}>
                         <Route path="/register" element={<Register />}/>
                         <Route path="/login" element={<Login />}/>

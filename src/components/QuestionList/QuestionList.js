@@ -14,7 +14,7 @@ const QuestionList = ({ questions, page, setPage}) => {
                                 <Card.Title>{question.User.firstName + " " + question.User.lastName}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">{moment(question.createdAt).fromNow()}</Card.Subtitle>
                                 <Card.Text>{question.description}</Card.Text>
-                                <Link to="/">View More</Link>
+                                <Link to={`/question/${question.id}`}>View More</Link>
                             </Card.Body>
                         </Card>
                     </Col>

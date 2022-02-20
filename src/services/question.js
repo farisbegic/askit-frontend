@@ -1,5 +1,5 @@
 import API from "../axios";
-import {GET_HOT_QUESTIONS, GET_MY_QUESTIONS, GET_QUESTIONS} from "../utils/constants/question";
+import {GET_HOT_QUESTIONS, GET_MY_QUESTIONS, GET_QUESTION, GET_QUESTIONS} from "../utils/constants/question";
 
 const question = {
     async getLatestQuestions(payload) {
@@ -10,6 +10,9 @@ const question = {
     },
     async getMyQuestions(payload) {
         return await API.get(`${GET_MY_QUESTIONS}${payload}`)
+    },
+    async getQuestion(payload) {
+        return await API.get(`${GET_QUESTION}${payload}`)
     }
 }
 
