@@ -1,6 +1,6 @@
 import API from "../axios";
 import {
-    ADD_QUESTION,
+    ADD_QUESTION, DELETE_QUESTION, EDIT_QUESTION,
     GET_HOT_QUESTIONS,
     GET_MY_QUESTIONS,
     GET_QUESTION,
@@ -22,6 +22,12 @@ const question = {
     },
     async addQuestion(payload) {
         return await API.post(ADD_QUESTION, payload)
+    },
+    async deleteQuestion(payload) {
+        return await API.delete(`${DELETE_QUESTION}${payload}`)
+    },
+    async editQuestion(payload) {
+        return await API.put(EDIT_QUESTION, payload)
     }
 }
 

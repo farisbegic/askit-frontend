@@ -18,6 +18,7 @@ import Question from "./pages/Question";
 import EditAnswer from "./pages/EditAnswer";
 import Error from "./components/Error/Error";
 import AddQuestion from "./pages/AddQuestion";
+import EditQuestion from "./pages/EditQuestion";
 
 const rootElement = document.getElementById("root");
 const queryClient = new QueryClient()
@@ -41,6 +42,7 @@ render(
                         <Route path="/question/:id" element={<Question />}/>
                         <Route path="/edit-answer" element={<EditAnswer />}/>
                         <Route path="/add-question" element={<AddQuestion />}/>
+                        <Route path="/edit-question" element={<EditQuestion />}/>
                     </Route>
                     <Route path="*" element={<Error />}/>
                 </Routes>
