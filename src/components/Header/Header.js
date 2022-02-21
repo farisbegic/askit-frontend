@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {AuthenticationContext} from "../../contexts/AuthenticationContextProvider";
 
 const Header = () => {
-    const { name, logout, accessToken } = useContext(AuthenticationContext)
+    const { accessToken, logout } = useContext(AuthenticationContext)
     return (
         <Navbar bg="light" expand="lg">
             <Container fluid="sm">
@@ -25,7 +25,7 @@ const Header = () => {
                         ) : (
                             <>
                                 <Link className="text-secondary text-decoration-none px-2" to="/my-questions">My Questions</Link>
-                                <Link className="text-secondary text-decoration-none px-2" to="/profile">{name}</Link>
+                                <Link className="text-secondary text-decoration-none px-2" to="/profile">Profile</Link>
                                 <Link className="text-secondary text-decoration-none px-2" to="/" onClick={() => logout()}>Logout</Link>
                             </>
                             )}
