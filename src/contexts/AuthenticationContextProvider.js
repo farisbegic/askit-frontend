@@ -1,6 +1,5 @@
 import React, {createContext, useEffect, useState} from 'react';
 import authentication from "../services/authentication";
-import API from "../axios";
 
 export const AuthenticationContext = createContext("");
 
@@ -38,17 +37,6 @@ const AuthenticationContextProvider = (props) => {
         }
     }, [accessToken])
 
-    API.interceptors.request.use(
-        function (config) {
-            if (accessToken) {
-                config.headers["Authorization"] = `Bearer ${accessToken}`;
-            }
-            return config;
-        },
-        function (error) {
-            return Promise.reject(error);
-        }
-    );
 
     return (
         <AuthenticationContext.Provider value={{accessToken, setAccessToken, name, setName, rejected, setRejected, id, setId, logout}}>
