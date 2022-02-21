@@ -1,0 +1,11 @@
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100%;
+}
+
+.error-img {
+    width: 400px;
+}

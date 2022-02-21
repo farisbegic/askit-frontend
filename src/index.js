@@ -16,6 +16,7 @@ import EditPassword from "./pages/EditPassword";
 import MyQuestions from "./pages/MyQuestions";
 import Question from "./pages/Question";
 import EditAnswer from "./pages/EditAnswer";
+import Error from "./components/Error/Error";
 
 const rootElement = document.getElementById("root");
 const queryClient = new QueryClient()
@@ -39,6 +40,7 @@ render(
                         <Route path="/question/:id" element={<Question />}/>
                         <Route path="/edit-answer" element={<EditAnswer />}/>
                     </Route>
+                    <Route path="*" element={<Error />}/>
                 </Routes>
             </AuthenticationContextProvider>
         </BrowserRouter>
