@@ -4,7 +4,6 @@ import moment from "moment";
 import {Link, useNavigate} from "react-router-dom";
 import {AiOutlineDelete, AiOutlineEdit} from "react-icons/ai";
 import {useMutation, useQueryClient} from "react-query";
-import answer from "../../services/answer";
 import question from "../../services/question";
 import {AuthenticationContext} from "../../contexts/AuthenticationContextProvider";
 
