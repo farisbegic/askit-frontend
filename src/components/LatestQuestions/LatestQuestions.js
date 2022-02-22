@@ -16,7 +16,7 @@ const LatestQuestions = () => {
         <Container fluid="sm" className="py-4">
             <h3 className="pb-3">Latest Questions</h3>
             { !isLoading && (
-                <QuestionList questions={data.data} page={page} setPage={setPage} />
+                <QuestionList questions={data.data} page={page} setPage={setPage} refetch="latestQuestions"/>
             )}
         </Container>
     );

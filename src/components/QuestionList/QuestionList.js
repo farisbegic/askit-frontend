@@ -7,7 +7,7 @@ import {useMutation, useQueryClient} from "react-query";
 import question from "../../services/question";
 import {AuthenticationContext} from "../../contexts/AuthenticationContextProvider";
 
-const QuestionList = ({ questions, page, setPage}) => {
+const QuestionList = ({ questions, page, setPage, refetch}) => {
     const navigate = useNavigate()
     const queryClient = useQueryClient();
     const { id } = useContext(AuthenticationContext)
@@ -16,12 +16,9 @@ const QuestionList = ({ questions, page, setPage}) => {
         await question.deleteQuestion(value)
     }, {
         onSuccess: async () => {
-            await queryClient.refetchQueries("myQuestions")
+            await queryClient.refetchQueries(refetch)
         }
     })
-
-    console.log(id);
-    console.log(questions);
 
     return (
         <>
@@ -33,21 +30,17 @@ const QuestionList = ({ questions, page, setPage}) => {
                                 <Card.Title>{question.User.firstName + " " + question.User.lastName}</Card.Title>
                                 <Card.Subtitle className="mb-2 text-muted">{moment(question.createdAt).fromNow()}</Card.Subtitle>
                                 <Card.Text>{question.description}</Card.Text>
-                                { question.User.id == id && (
-                                    <Card.Subtitle className="my-2">
-                                        <AiOutlineEdit
-                                            size={22}
-                                            style={{cursor: "pointer"}}
-                                            onClick={() => navigate(`/edit-question`, { state: question })}
-                                        />{' '}
-                                        <AiOutlineDelete
-                                            size={22}
-                                            style={{cursor: "pointer"}}
-                                            onClick={() => deleteQuestion.mutate(question.id)}
-                                        />
-                                    </Card.Subtitle>
-                                )}
-                                <Link to={`/question/${question.id}`}>View More</Link>
+                                <Row>
+                                    <Col>
+                                        <Link to={`/question/${question.id}`}>View More</Link>
+                                    </Col>
+                                    { question.User.id == id && (
+                                        <Col>
+                                            <span style={{cursor: "pointer"}} className="text-info mx-3" onClick={() => navigate(`/edit-question`, { state: question })}>Edit</span>
+                                            <span style={{cursor: "pointer"}} className="text-danger mx-3" onClick={() => deleteQuestion.mutate(question.id)}>Delete</span>
+                                        </Col>
+                                    )}
+                                </Row>
                             </Card.Body>
                         </Card>
                     </Col>

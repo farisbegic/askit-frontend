@@ -25,7 +25,7 @@ const MyQuestions = () => {
                 </Col>
             </Row>
             { !isLoading && (
-                <QuestionList questions={data.data} page={page} setPage={setPage}/>
+                <QuestionList questions={data.data} page={page} setPage={setPage} refetch="myQuestions"/>
             )}
         </Container>
     );
