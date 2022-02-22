@@ -33,8 +33,8 @@ const AddQuestion = () => {
                         placeholder="Enter your question"
                     />
 
-                    <Button type="submit">
-                        Add Question
+                    <Button type="submit" className="mt-2">
+                        Add question
                     </Button>
                 </Form>
             </Formik>

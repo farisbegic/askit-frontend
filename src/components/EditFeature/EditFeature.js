@@ -1,10 +1,9 @@
 import React from 'react';
 import {useLocation, useNavigate} from "react-router-dom";
 import {useMutation} from "react-query";
-import question from "../services/question";
-import {Button, Container} from "react-bootstrap";
+import {Button} from "react-bootstrap";
 import {Form, Formik} from "formik";
-import Input from "../components/Input/Input";
+import Input from "../Input/Input"
 
 const EditFeature = (props) => {
     const { state } = useLocation();

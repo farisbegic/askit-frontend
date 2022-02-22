@@ -1,6 +1,6 @@
 import React from 'react';
 import {Container} from "react-bootstrap";
-import EditFeature from "./EditFeature";
+import EditFeature from "../components/EditFeature/EditFeature"
 import answer from "../services/answer";
 
 const EditAnswer = () => {
