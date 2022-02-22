@@ -20,6 +20,9 @@ const QuestionList = ({ questions, page, setPage}) => {
         }
     })
 
+    console.log(id);
+    console.log(questions);
+
     return (
         <>
             <Row xs={1} md={2} className="g-4">
