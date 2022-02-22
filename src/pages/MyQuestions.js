@@ -17,10 +17,10 @@ const MyQuestions = () => {
     return (
         <Container fluid="sm" className="py-4">
             <Row className="py-4">
-                <Col className="d-flex align-items-center">
-                    <h3 className="pb-3">MyQuestions</h3>
+                <Col>
+                    <h3>MyQuestions</h3>
                 </Col>
-                <Col className="d-flex align-items-center justify-content-end">
+                <Col className="d-flex justify-content-end">
                     <Button onClick={() => navigate("/add-question")}>Add question</Button>
                 </Col>
             </Row>
