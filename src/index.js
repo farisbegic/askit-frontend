@@ -19,6 +19,7 @@ import EditAnswer from "./pages/EditAnswer";
 import Error from "./components/Error/Error";
 import AddQuestion from "./pages/AddQuestion";
 import EditQuestion from "./pages/EditQuestion";
+import Notification from "./components/Notification/Notification";
 
 const rootElement = document.getElementById("root");
 const queryClient = new QueryClient()
@@ -28,6 +29,7 @@ render(
         <BrowserRouter>
             <AuthenticationContextProvider>
                 <Header />
+                <Notification />
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route element={<LimitedRoute />}>

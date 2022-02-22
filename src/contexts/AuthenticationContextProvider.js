@@ -1,5 +1,6 @@
 import React, {createContext, useEffect, useState} from 'react';
 import authentication from "../services/authentication";
+import {io} from "socket.io-client";
 
 export const AuthenticationContext = createContext("");
 
@@ -26,6 +27,7 @@ const AuthenticationContextProvider = (props) => {
     }
 
     const logout = async () => {
+        const socket = io(process.env.REACT_APP_API_URL)
         const response = await authentication.logout();
         if (response.status === 200) {
             localStorage.removeItem("id")
