@@ -1,6 +1,5 @@
 import React, {createContext, useEffect, useState} from 'react';
 import authentication from "../services/authentication";
-import {io} from "socket.io-client";
 
 export const AuthenticationContext = createContext("");
 
@@ -27,7 +26,6 @@ const AuthenticationContextProvider = (props) => {
     }
 
     const logout = async () => {
-        const socket = io(process.env.REACT_APP_API_URL)
         const response = await authentication.logout();
         if (response.status === 200) {
             localStorage.removeItem("id")
@@ -37,7 +35,7 @@ const AuthenticationContextProvider = (props) => {
         }
     }
 
-    // Generate new access token every 10 minutes
+    // Generate new access token based on refresh token every 10 minutes
 
     setInterval(async () => {
         await fetchAccessToken();
