@@ -50,7 +50,7 @@ const QuestionList = ({ questions, page, setPage}) => {
                     </Col>
                 ))}
             </Row>
-            { questions.size > 0 && (
+            { questions.length > 0 && (
                 <Button onClick={() => setPage(page+1)}>Load More</Button>
             )}
         </>
