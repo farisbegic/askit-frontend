@@ -6,7 +6,7 @@ import question from "../services/question";
 import {useNavigate} from "react-router-dom";
 
 const MyQuestions = () => {
-    const size = 3;
+    const size = 20;
     const [page, setPage] = useState(1);
     const navigate = useNavigate();
 

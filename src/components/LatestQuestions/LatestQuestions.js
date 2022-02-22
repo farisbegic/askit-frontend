@@ -5,7 +5,7 @@ import { useQuery } from 'react-query'
 import QuestionList from "../QuestionList/QuestionList";
 
 const LatestQuestions = () => {
-    const size = 3;
+    const size = 20;
     const [page, setPage] = useState(1);
 
     const { isLoading, data } = useQuery(['latestQuestions', page], async () =>
