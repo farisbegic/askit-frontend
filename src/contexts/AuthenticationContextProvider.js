@@ -35,11 +35,12 @@ const AuthenticationContextProvider = (props) => {
         }
     }
 
-    // Generate new access token based on refresh token every 10 minutes
-
+    // Generate new access token based on refresh every 8.3 minutes
     setInterval(async () => {
-        await fetchAccessToken();
-    }, 600000)
+        if (accessToken) {
+            await fetchAccessToken();
+        }
+    }, 500000)
 
     useEffect(() => {
         setId(localStorage.getItem("id"))
