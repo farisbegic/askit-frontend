@@ -13,7 +13,7 @@ To run this project, open the cloned repository and follow these steps:
 ````
 npm install or npm i
 ````
-3. Launch the development server using the command
+2. Launch the development server using the command
 ````
 npm start
 ````
