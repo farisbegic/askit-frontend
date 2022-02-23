@@ -26,6 +26,7 @@ This should run the application in your browser at `localhost:3000`.
 * The profile page is a private route that displays the profile of the currently logged-in user. The user can amend personal information and change their password.
 * Login page is a public route that allows users with accounts to log in.
 * Register page is a public route that allows new users to register, contains form validation.
+* Upon receiving an answer for users question, user is notified in realtime (no need to refresh)
 
 ## Account
 
