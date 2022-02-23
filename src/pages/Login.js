@@ -6,6 +6,7 @@ import {loginValidation} from "../utils/validations/login";
 import {useMutation} from "react-query";
 import authentication from "../services/authentication";
 import {AuthenticationContext} from "../contexts/AuthenticationContextProvider";
+import {Link} from "react-router-dom";
 
 const Login = () => {
     const { setResponse } = useContext(AuthenticationContext);
@@ -43,7 +44,7 @@ const Login = () => {
                         type="password"
                         placeholder="Enter your password"
                     />
-
+                    <p className="text-secondary mt-3">Still don't have an account? <Link to="/register">Register</Link></p>
                     {  handleLogin.isError && (
                         <p className="text-danger">Your email or password are entered incorrectly.</p>
                     ) }

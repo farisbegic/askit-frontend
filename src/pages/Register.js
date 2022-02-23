@@ -6,6 +6,7 @@ import Input from "../components/Input/Input";
 import {useMutation} from "react-query";
 import authentication from "../services/authentication";
 import {AuthenticationContext} from "../contexts/AuthenticationContextProvider";
+import {Link} from "react-router-dom";
 
 const Register = () => {
     const { setResponse } = useContext(AuthenticationContext);
@@ -77,6 +78,7 @@ const Register = () => {
                             />
                         </Col>
                     </Row>
+                    <p className="text-secondary mt-3">Already registered? <Link to="/login">Log in</Link></p>
                     {  handleRegistration.isError && (
                         <p className="text-danger">You either entered used mail or didn't fill all input fields.</p>
                     ) }
