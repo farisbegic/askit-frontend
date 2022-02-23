@@ -5,6 +5,7 @@ const GET_QUESTION = "question/";
 const ADD_QUESTION = "question";
 const DELETE_QUESTION = "question/";
 const EDIT_QUESTION = "question";
+const SEARCH_QUESTION = "question/search/"
 
 export {
     GET_QUESTIONS,
@@ -13,5 +14,6 @@ export {
     GET_QUESTION,
     ADD_QUESTION,
     DELETE_QUESTION,
-    EDIT_QUESTION
+    EDIT_QUESTION,
+    SEARCH_QUESTION
 };

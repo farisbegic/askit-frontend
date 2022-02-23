@@ -4,7 +4,7 @@ import {
     GET_HOT_QUESTIONS,
     GET_MY_QUESTIONS,
     GET_QUESTION,
-    GET_QUESTIONS
+    GET_QUESTIONS, SEARCH_QUESTION
 } from "../utils/constants/question";
 
 const question = {
@@ -28,6 +28,9 @@ const question = {
     },
     async editQuestion(payload) {
         return await API.put(EDIT_QUESTION, payload)
+    },
+    async searchQuestion(payload) {
+        return await API.get(`${SEARCH_QUESTION}${payload}`);
     }
 }
 
