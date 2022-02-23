@@ -9,13 +9,20 @@ Follow the steps below to get started with this project's development environmen
 
 ## Setup
 To run this project, open the cloned repository and follow these steps:
-1. Navigate to the project folder and install dependencies with
+1. Navigate to the project folder and install dependencies with command
 ````
 npm install or npm i
 ````
-command.
-3. Launch the development server using the 
+3. Launch the development server using the command
 ````
 npm start
 ````
-command. This should run the application in your browser at `localhost:3000`.
+This should run the application in your browser at `localhost:3000`.
+
+## Features
+* The homepage is a public route that includes a search area for filtering questions, a list of the most recent questions, and a statistics section that shows who has the most responses and questions with most likes.
+* My Questions is a private page that filters questions posted by the current logged-in user. Create, Edit, and Delete questions are all possible options for the user.
+* The question page is a private route that displays all of the question's data as well as any relevant answers. A logged-in user can also Like/Dislike questions and answers, as well as Add/Edit/Delete responses.
+* The profile page is a private route that displays the profile of the currently logged-in user. The user can amend personal information and change their password.
+* Login page is a public route that allows users with accounts to log in.
+* Register page is a public route that allows new users to register, contains form validation.
