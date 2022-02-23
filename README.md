@@ -1,3 +1,8 @@
+## Overview
+Ask.it is a React.js, Node.js, and PostgreSQL-based full-stack web application that allows users to ask and answer questions.
+
+This repository contains frontend implementation, which is deployed to [https://ask-it-frontend.herokuapp.com](Heroku)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
