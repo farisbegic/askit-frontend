@@ -39,7 +39,7 @@ const AnswerDetail = ({ questionId }) => {
                             </Col>
                             <Col>
                                 <Card.Text>{moment(answer.createdAt).fromNow()}</Card.Text>
-                                { answer.User.id == id && (
+                                { answer.User.id === parseInt(id) && (
                                     <Card.Subtitle>
                                         <AiOutlineEdit
                                             size={22}

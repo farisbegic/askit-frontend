@@ -33,7 +33,7 @@ const QuestionList = ({ questions, page, setPage, refetch}) => {
                                     <Col>
                                         <Link to={`/question/${question.id}`}>View More</Link>
                                     </Col>
-                                    { question.User.id == id && (
+                                    { question.User.id === parseInt(id) && (
                                         <Col>
                                             <span style={{cursor: "pointer"}} className="text-info mx-3" onClick={() => navigate(`/edit-question`, { state: question })}>Edit</span>
                                             <span style={{cursor: "pointer"}} className="text-danger mx-3" onClick={() => deleteQuestion.mutate(question.id)}>Delete</span>
